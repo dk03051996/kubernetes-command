@@ -1,0 +1,26 @@
+kubectl apply -f pod.yml or kubectl create -f pod.yml  # to create the pod
+kubectl delete relicaset name-of-replica    # to delete any service like replicaset
+kubectl replace -f replicaset.yml   # to update replicaset from n numbers to n+2 ex from 2 to 4 or 4 to 6
+
+kubectl scale -replicas=6 -f replicaset.yml.   to update the same but it will not effect the configuration written in file.
+kubectl edit rs new-replica-set  #this is being used to edit any replica-set configuration without knowing the filename.
+
+kubectl run nginx --image=nginx --dry-run=client -o yaml. # this command will create a yaml file for that specific pod.
+
+kubectl create deployment --image=nginx nginx --dry-run=client -o yaml   # this is used to create yml file for deployment named nginx
+
+kubectl get pods --all-namespaces.   # to list all pods of all namespaces
+
+
+kubectl config set-context $(kubectl config current-context) --namespace=dev. # to make dev as default namespace
+ 
+ #ResourceQuota type in pod-definition file can be used to limit memory and cpu limit to a specific namespace.
+ 
+ kubectl set image deployment nginx nginx=nginx:1.18 # this is used to update the image in running deployment
+ 
+ kubectl create service clusterip redis --tcp=6379:6379  #to create service file 
+ 
+ kubectl expose pod nginx --type=NodePort --port=80 --name=nginx-service --dry-run=client -o yaml. # to create a service that expose nginx pod
+ 
+ 
+
