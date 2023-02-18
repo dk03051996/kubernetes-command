@@ -22,5 +22,24 @@ kubectl config set-context $(kubectl config current-context) --namespace=dev. # 
  
  kubectl expose pod nginx --type=NodePort --port=80 --name=nginx-service --dry-run=client -o yaml. # to create a service that expose nginx pod
  
+ kubectl get pods --selector env=dev. # this is used to get pod where env is dev and it is defined in selector
+ 
+ Taints Node: This is used to set which pod should go to which node
+  kubectl taint nodes node-name key=value:taint-effect
+  ex: kubectl taint node node1 app=blue:NoSchedule
+  # To remove the taint use the same command just put "-" at the end which will untaint
+  
+  kubectl label nodes nodes1 size=large #this command labels your node so that when you configure nodeselector in pod you can use the same label.
+ 
+ kubectl get deamonsets -A. # to get all daemonsets of namespace
+ 
+ kubectl rollout status deployment/app-deployment #this command is used to check status when we use apply command to do some changes.
+ 
+ kubectl rollout undo deployment/my-deployment. # it will revert the changes done by kubectl commands and back to previous deployment configuration.
+ 
+ kubectl set image deployment frontend simple-webapp=color:v2 # this command is used to update image on deployment named frontend where simple-webapp is name of container
+ 
+ kubectl create secret generic secret-name --from-literal=DB_Host=Mysql   # to create secret for kubernetes
+ 
  
 
