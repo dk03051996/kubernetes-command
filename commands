@@ -41,5 +41,11 @@ kubectl config set-context $(kubectl config current-context) --namespace=dev. # 
  
  kubectl create secret generic secret-name --from-literal=DB_Host=Mysql   # to create secret for kubernetes
  
+ kubectl drain node-1 #to mmark node as maintainance, empty the node and mark it unschedulable.
+ kubectl uncordon node-1. # to mark node schedulable after maintaninace.
+ kubectl cordon node-2 # this command is to make sure new pods shoult not be scheduled in that nodes but it does not move pod to another node.
+ 
+ kubectl get all --all-namespaces -o yaml > all-deploy-services.yaml #this is the command to store all yaml as backup from apiserver 
+ etcdctl snapshot save snapshot.db # this command is used to backup all store in ETCD
  
 
