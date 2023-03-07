@@ -48,4 +48,5 @@ kubectl config set-context $(kubectl config current-context) --namespace=dev. # 
  kubectl get all --all-namespaces -o yaml > all-deploy-services.yaml #this is the command to store all yaml as backup from apiserver 
  etcdctl snapshot save snapshot.db # this command is used to backup all store in ETCD
  
+ 
 
